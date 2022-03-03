@@ -1,4 +1,4 @@
-import { DELETE_TASK,ADD_TASK,COMPLETE_TASK,EDIT_TASK } from "./type";
+import { DELETE_TASK,ADD_TASK,EDIT_TASK } from "./type";
 
 // Add Task
 export const addTask=(payload)=>{
@@ -7,10 +7,18 @@ export const addTask=(payload)=>{
          payload
     }
 }
-//Delete Task
-export const deleteTask=(id)=>{
+// Delete Task
+export const deleteTask =(id)=>{
+return{
+    type:DELETE_TASK,
+    payload:id
+}
+}
+// Edit Task
+export const editTask =(id,value)=>{
     return{
-        type:DELETE_TASK,
-        payload:id
+        type:EDIT_TASK,
+        payload:{id,value}
+
     }
 }

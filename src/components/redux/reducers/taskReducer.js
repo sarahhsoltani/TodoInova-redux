@@ -1,7 +1,9 @@
-import { ADD_TASK,DELETE_TASK } from "../actions/type"
+import { ADD_TASK,DELETE_TASK, EDIT_TASK } from "../actions/type"
 
 const initialState={
     todos:[],
+ 
+    
    
 }
 
@@ -13,11 +15,14 @@ switch (type){
             {...state,
                 todos:[...state.todos,payload]}
         )
- 
-  case DELETE_TASK:
-  return(
-    {...state,todos:state.todos.filter((el)=>el.id !== payload)}
-  )
+    case DELETE_TASK :
+       return(
+           {...state,todos:state.todos.filter((el)=>el.id !== payload)}
+       )
+  case EDIT_TASK:
+      return(
+        {...state,todos:state.todos.map((el)=>(el.id===payload.id)?{...el,input:payload.value}:el)}
+      )
     default:
     return state
 }

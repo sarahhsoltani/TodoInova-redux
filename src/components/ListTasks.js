@@ -13,25 +13,27 @@ const ListTa=()=>{
         console.log(`input`, input)
        }
     //    add function
-      const addTasks=(e)=>{
-  if(input){
-    e.preventDefault()
-    dispatch(addTask({input:input,id:Math.random()}))
-    setInput("")
-  }
-  else {
-      alert("is empty...")
-  }
+ 
+      const AddTasks=(e)=>{
+     if(input){
+        e.preventDefault()
+        dispatch(addTask({input:input,id:Math.random()}))
+        setInput("")
+     }
+     else{
+         alert("is empty...")
+     }
+
       }
     return(
 
 <div className='container my-5 '>
             <h1>Todo List <i className="fa-solid fa-clipboard-check"></i></h1>
              <form className="d-flex mx-5 mt-5">
-        <input className="form-control   " type="search" value={input}   onChange={handleChange} placeholder="enter your todo list" aria-label="Search"/>
-        <button className="btn btn-success px-5" type="submit" onClick={addTasks} >Add</button>
+        <input className="form-control" type="search" value={input}   onChange={handleChange} placeholder="enter your todo list" aria-label="Search"/>
+        <button className="btn btn-success px-5" type="submit"  onClick={AddTasks}>Add</button>
       </form>
-    <Tasks/>
+ <Tasks/>
         </div>
 
     )
